@@ -1,0 +1,27 @@
+* {}
+
+.titulo {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+p {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.wrapper{
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}

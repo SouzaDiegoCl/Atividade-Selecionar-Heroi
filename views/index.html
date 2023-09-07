@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATIVIDADE - PW</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <h1 class="titulo">HERÓIS</h1>
+    <hr>
+    <br>
+    {% if universoSelecionado == "Marvel" %}
+    <div class="wrapper">
+        <p>Escolha um dos herois da {{ universoSelecionado }}:</p>
+        <form action="/heroiSelect" method="post">
+            <select name="inputHeroiSelect">
+                <option value="none" selected disabled hidden></option>
+                <option value="spiderman">Homem-Aranha</option>
+                <option value="capitaoAmerica">Capitão América</option>
+                <option value="feiticeiraEscarlate">Feiticeira Escarlate</option>
+            </select>
+            <button type="submit">Gerar imagem</button>
+        </form>
+    </div>
+    {% elif universoSelecionado == "DC" %}
+    <div class="wrapper">
+        <p>Escolha um dos herois da {{universoSelecionado}}:</p>
+        <form action="/heroiSelect" method="post">
+            <select name="inputHeroiSelect">
+                <option value="none" selected disabled hidden></option>
+                <option value="batman">Batman</option>
+                <option value="superman">Superman</option>
+                <option value="flash">flash</option>
+            </select>
+            <button type="submit">Gerar imagem</button>
+        </form>
+    </div>
+    {% elif universoSelecionado == "selecionado" %}
+    <div class="wrapper">
+        {%if heroiSelecionado == 'batman'%}
+        <img src="{{ url_for('static', filename='batman.png')}}" width="200"><br>
+        {%elif heroiSelecionado == 'superman'%}
+        <img src="{{ url_for('static', filename='superman.png')}}" width="200"><br>
+        {%elif heroiSelecionado == 'flash'%}
+        <img src="{{ url_for('static', filename='flash.png')}}" width="200"><br>
+        {%elif heroiSelecionado == 'spiderman'%}
+        <img src="{{ url_for('static', filename='spiderman.png')}}" width="200"><br>
+        {%elif heroiSelecionado == 'capitaoAmerica'%}
+        <img src="{{ url_for('static', filename='capitaoAmerica.png')}}" width="200"><br>
+        {%elif heroiSelecionado == 'feiticeiraEscarlate'%}
+        <img src="{{ url_for('static', filename='feiticeiraEscarlate.png')}}" width="200"><br>
+        {% endif %}
+        <form action="/">
+            <button type="submit">Voltar</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="wrapper">
+
+        <p>Selecione o universo:</p>
+
+        <form action="/universoSelect" method="post">
+            <select name="inputUniversoSelect">
+                <option value="none" selected disabled hidden></option>
+                <option value="Marvel">MARVEL</option>
+                <option value="DC">DC</option>
+            </select>
+            <button type="submit">Selecionar</button>
+        </form>
+    </div>
+    {% endif %}
+</body>
+
+</html>
